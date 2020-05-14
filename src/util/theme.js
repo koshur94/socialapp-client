@@ -21,7 +21,7 @@ export default {
         textAlign: 'center',
       },
       image: {
-          margin: '10px auto 10px auto',
+          margin: '20px auto 20px auto',
           height: 70
       },
       pageTitle: {
@@ -35,7 +35,7 @@ export default {
           position: 'relative'
       },
       customError: {
-          color: ' #FF0000',
+          color: 'red',
           fontSize: '0.8rem',
           marginTop: 10
       },
