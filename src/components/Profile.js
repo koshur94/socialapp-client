@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
+import EditDetails from './EditDetails';
  
 // Redux
 import { connect } from 'react-redux';
@@ -15,12 +16,13 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 
 // Icons
 import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
-import EditIcon from '@material-ui/icons/Edit';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 
 const styles = theme => ({
@@ -83,7 +85,11 @@ class Profile extends Component {
     handleEditPicture = () => {
         const fileInput = document.getElementById('imageInput');
         fileInput.click();
-    }
+    };
+
+    handleLogout = () => {
+        this.props.logoutUser();
+    };
  
     render() {
         const {
@@ -108,7 +114,7 @@ class Profile extends Component {
                         />
                         <Tooltip title='Edit profile picture' placement='top'>
                             <IconButton onClick={this.handleEditPicture} className='button'>
-                                <EditIcon color='primary'/>
+                                <PhotoCamera color='primary'/>
                             </IconButton>
                         </Tooltip>
                     </div>
@@ -138,6 +144,12 @@ class Profile extends Component {
                         <CalendarToday color='primary' />{'  '}
                         <span>Joined {dayjs(createdAt).format('MMM YYYY ')}</span>
                     </div>
+                    <Tooltip title='Logout' placement='top'>
+                        <IconButton onClick={this.handleLogout}>
+                            <ExitToApp color='primary'/>
+                        </IconButton>
+                    </Tooltip>
+                    <EditDetails/>
                 </div>
             </Paper>
         ) : (
