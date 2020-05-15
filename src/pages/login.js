@@ -78,7 +78,7 @@ class login extends Component {
                             label='Password'
                             className={classes.textField}
                             helperText={errors.password}
-                            error={errors.password   ? true : false}
+                            error={errors.password ? true : false}
                             value={this.state.password}
                             onChange={this.handleChange}
                             fullWidth />
