@@ -26,15 +26,23 @@ class signup extends Component {
             confirmPassword: '',
             handle: '',
             errors: {},
-
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    static getDerivedStateFromProps(nextProps) {
         if (nextProps.UI.errors) {
-            this.setState({ errors: nextProps.UI.errors });
+            return {
+                errors: nextProps.UI.errors
+            }
         }
+        return null;
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.UI.errors) {
+    //         this.setState({ errors: nextProps.UI.errors });
+    //     }
+    // }
 
     handleSubmit = event => {
         event.preventDefault();

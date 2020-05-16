@@ -27,10 +27,13 @@ class login extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    static getDerivedStateFromProps(nextProps) {
         if (nextProps.UI.errors) {
-            this.setState({ errors: nextProps.UI.errors });
+            return {
+                errors: nextProps.UI.errors
+            }
         }
+        return null;
     }
 
     handleSubmit = event => {
