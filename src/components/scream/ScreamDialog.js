@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 
 // MUI
 import Dialog from '@material-ui/core/Dialog';
@@ -19,15 +20,11 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 // Redux
 import { connect } from 'react-redux';
-import { getScream } from '../../redux/actions/dataActions';
+import { getScream, clearErrors } from '../../redux/actions/dataActions';
 import { CircularProgress } from '@material-ui/core';
 
 const styles = theme => ({
     ...theme.spreadThis,
-    invisibleSeparator: {
-        border: 'none',
-        margin: 5
-    },
     profileImage: {
         width: 200,
         height: 200,
@@ -50,6 +47,9 @@ const styles = theme => ({
         textAlign: 'center',
         marginTop: 50,
         marginBottom: 50
+    },
+    visibleSeparator: {
+
     }
 
 })
@@ -65,7 +65,8 @@ class ScreamDialog extends Component {
     };
 
     handleClose = () => {
-        this.setState({ open: false })
+        this.setState({ open: false });
+        this.props.clearErrors();
     };
 
     render() {
@@ -109,6 +110,7 @@ class ScreamDialog extends Component {
                     <span>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</span>
                 </Grid>
                 <hr className={classes.visibleSeparator} />
+                <CommentForm screamId={screamId}/>
                 <Comments comments={comments} />
             </Grid>
         );
@@ -142,6 +144,7 @@ class ScreamDialog extends Component {
 
 ScreamDialog.propTypes = {
     getScream: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     screamId: PropTypes.string.isRequired,
     userHandle: PropTypes.string.isRequired,
     scream: PropTypes.object.isRequired,
@@ -154,7 +157,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-    getScream
+    getScream,
+    clearErrors
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(ScreamDialog))
