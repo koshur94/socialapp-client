@@ -26,15 +26,17 @@ const styles = {
     card: {
         display: 'flex',
         position: 'relative',
-        marginBottom: 20
+        marginBottom: '1%'
     },
     image: {
-        minWidth: 150,
+        minWidth: '20%',
 
     },
     content: {
-        padding: 25,
-        objectFit: 'cover'
+        paddingBottom: 0,
+        padding: '2%',
+        objectFit: 'cover',
+        width: '80%'
     }
 }
 
@@ -71,22 +73,22 @@ class Scream extends Component {
                 />
                 <CardContent className={classes.content}>
                     <Typography
-                        variant='h5'
+                        variant='h6'
                         component={Link}
                         to={`/users/${userHandle}`}
                         color='primary'
                         >
                         @{userHandle}
                     </Typography>
-                    {deleteButton}
-                    <Typography variant='body2' color='textSecondary'>{dayjs(createdAt).fromNow()}</Typography>
-                    <Typography variant='body1'>{body}</Typography>
+                    <Typography variant='subtitle2' color='textSecondary'>{dayjs(createdAt).fromNow()}</Typography>
+                    <Typography variant='body2'>{body}</Typography>
                     <LikeButton screamId={screamId} />
-                    <span>{likeCount} {likeCount === 1 ? 'like' : 'likes'}</span>
+                    <small>{likeCount} {likeCount === 1 ? 'like' : 'likes'}</small>
                     <MyButton tip='comments'>
                         <ChatIcon color='primary' />
                     </MyButton>
-                    <span>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</span>
+                    <small>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</small>
+                    {deleteButton}
                     <ScreamDialog screamId={screamId} userHandle={userHandle} openDialog={this.props.openDialog}/>
                 </CardContent>
             </Card>

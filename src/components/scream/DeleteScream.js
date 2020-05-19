@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
-import HighlightOff from '@material-ui/icons/HighlightOff';
+import DeleteOutline from '@material-ui/icons/DeleteOutline';
 
 // Redux
 import { connect } from 'react-redux';
@@ -16,9 +16,10 @@ import { deleteScream } from '../../redux/actions/dataActions';
 
 const styles = {
     deleteButton: {
-        position: 'absolute',
-        top: '10%',
-        left: '90%',
+        // position: 'absolute',
+        // top: '10%',
+        // left: '90%',
+        // opacity: '.2'
     }
 }
 
@@ -51,7 +52,7 @@ class DeleteScream extends Component {
                     onClick={this.handleOpen}
                     btnClassName={classes.deleteButton}
                     >
-                        <HighlightOff color='secondary' />
+                        <DeleteOutline color='secondary' />
                 </MyButton>
                 <Dialog
                     open={this.state.open}

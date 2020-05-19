@@ -47,8 +47,8 @@ export default {
         margin: 5
       },
       visibleSeparator: {
-        width: '100%',
-        borderBottom: '1px solid rgba(0, 0, 0, .1)',
+        width: '90%',
+        borderBottom: '0px solid rgba(0, 0, 0, 0)',
         marginBottom: '20px'
       },
       paper: {

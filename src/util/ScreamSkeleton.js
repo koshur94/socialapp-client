@@ -12,15 +12,15 @@ const styles = theme => ({
     ...theme.spreadThis,
     card: {
         display: 'flex',
-        marginBottom: 20
+        marginBottom: 8
     },
     cardContent: {
         width: '100%',
         flexDirection: 'column',
-        padding: 25
+        padding: 20
     },
     cover: {
-        minWidth: 150,
+        minWidth: '20%',
         opacity: '.5',
         objectFit: 'cover'
     },

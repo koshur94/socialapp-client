@@ -26,18 +26,18 @@ import { CircularProgress } from '@material-ui/core';
 const styles = theme => ({
     ...theme.spreadThis,
     profileImage: {
-        width: 200,
-        height: 200,
+        width: 100,
+        height: 100,
         objectFit: 'cover',
         maxWidth: '100%',
         borderRadius: '50%'
     },
     dialogContent: {
-        padding: 20
+        padding: '2%'
     },
     closeButton: {
         position: 'absolute',
-        left: '90%'
+        left: '85%'
     },
     expandButton: {
         position: 'absolute',
@@ -45,13 +45,9 @@ const styles = theme => ({
     },
     spinnerDiv: {
         textAlign: 'center',
-        marginTop: 50,
-        marginBottom: 50
-    },
-    visibleSeparator: {
-
+        marginTop: '2%',
+        marginBottom: '2%'
     }
-
 })
 
 class ScreamDialog extends Component {
@@ -96,38 +92,38 @@ class ScreamDialog extends Component {
 
         const dialogMarkup = loading ? (
             <div className={classes.spinnerDiv}>
-                <CircularProgress size={200} thickness={2} />
+                <CircularProgress size={150} thickness={1} />
             </div>
         ) : (
             <Grid container spacing={2}>
-                <Grid item sm={5}>
+                <Grid item sm={3}>
                     <img src={userImage} alt='Profile' className={classes.profileImage}/>
                 </Grid>
-                <Grid item sm={7}>
+                <Grid item sm={9}>
                     <Typography
                         component={Link}
                         color='primary'
-                        variant='h5'
+                        variant='h6'
                         to={`/users/${userHandle}`}
                     >
                         @{userHandle}
                     </Typography>
-                    <hr className={classes.invisibleSeparator}/>
-                    <Typography variant='body2' color='textSecondary'>
+                    {/* <hr className={classes.invisibleSeparator}/> */}
+                    <Typography variant='subtitle2' color='textSecondary'>
                         {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                     </Typography>
-                    <hr className={classes.invisibleSeparator}/>
-                    <Typography variant='body1'>
+                    {/* <hr className={classes.invisibleSeparator}/> */}
+                    <Typography variant='body2'>
                         {body}
                     </Typography>
                     <LikeButton screamId={screamId}/>
-                    <span>{likeCount} {likeCount === 1 ? 'like' : 'likes'}</span>
+                    <small>{likeCount} {likeCount === 1 ? 'like' : 'likes'}</small>
                     <MyButton tip='comments'>
                         <ChatIcon color='primary' />
                     </MyButton>
-                    <span>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</span>
+                    <small>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</small>
                 </Grid>
-                <hr className={classes.visibleSeparator} />
+                {/* <hr className={classes.visibleSeparator} /> */}
                 <CommentForm screamId={screamId}/>
                 <Comments comments={comments} />
             </Grid>

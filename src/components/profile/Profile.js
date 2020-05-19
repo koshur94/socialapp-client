@@ -74,15 +74,15 @@ class Profile extends Component {
                     </div>
                     <hr />
                     <div className="profile-details">
-                        <MuiLink component={Link} to={`/users/${handle}`} color='primary' variant='h5'>
+                        <MuiLink component={Link} to={`/users/${handle}`} color='primary' variant='h6'>
                             @{handle}
                         </MuiLink>
                         <hr />
-                        { bio && <Typography variant='body2'>{bio}</Typography> }
+                        { bio && <Typography variant='subtitle2'>{bio}</Typography> }
                         <hr />
                         { location && (
                             <Fragment>
-                                <LocationOn color='primary' /> <span>{location}</span>
+                                <LocationOn color='primary' /> <small>{location}</small>
                                 <hr />
                             </Fragment>
                         )}
@@ -96,7 +96,7 @@ class Profile extends Component {
                             </Fragment>
                         )}
                         <CalendarToday color='primary' />{'  '}
-                        <span>Joined {dayjs(createdAt).format('MMM YYYY ')}</span>
+                        <small>Joined {dayjs(createdAt).format('MMM YYYY ')}</small>
                     </div>
                     <MyButton tip='Logout' onClick={this.handleLogout}>
                         <ExitToApp color='primary'/>

@@ -38,12 +38,6 @@ class signup extends Component {
         return null;
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.UI.errors) {
-    //         this.setState({ errors: nextProps.UI.errors });
-    //     }
-    // }
-
     handleSubmit = event => {
         event.preventDefault();
         this.setState({
@@ -113,7 +107,7 @@ class signup extends Component {
                             id='handle'
                             name='handle'
                             type='text'
-                            label='Handle'
+                            label='Nickname'
                             className={classes.textField}
                             helperText={errors.handle}
                             error={errors.handle   ? true : false}

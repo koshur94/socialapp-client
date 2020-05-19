@@ -17,7 +17,7 @@ const styles = theme => ({
         borderRadius: '50%'
     },
     commentData: {
-        marginLeft: 20
+        marginLeft: '2%'
     }
 });
 
@@ -38,19 +38,19 @@ class Comments extends Component {
                                     <Grid item sm={9}>
                                         <div className={classes.commentData}>
                                             <Typography
-                                                variant='h5'
+                                                variant='h6'
                                                 component={Link}
                                                 to={`/users/${userHandle}`}
                                                 color='primary'>
                                                     @{userHandle}
                                             </Typography>
                                             <Typography
-                                                variant='body2'
+                                                variant='subtitle2'
                                                 color='textSecondary'>
                                                     {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                                             </Typography>
                                             <hr className={classes.invisibleSeparator}/>
-                                            <Typography variant='body1'>{body}</Typography>
+                                            <Typography variant='body2'>{body}</Typography>
                                         </div>
                                     </Grid>
                                 </Grid>
