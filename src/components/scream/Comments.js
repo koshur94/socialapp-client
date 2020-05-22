@@ -11,13 +11,14 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
     ...theme.spreadThis,
     commentImage: {
-        maxWidth: '100%',
-        height: 90,
+        width: 80,
+        height: 80,
         objectFit: 'cover',
         borderRadius: '50%'
     },
     commentData: {
-        marginLeft: '2%'
+        marginLeft: '1%',
+        minWidth: '100%'
     }
 });
 
@@ -30,12 +31,13 @@ class Comments extends Component {
                     const { body, createdAt, userImage, userHandle } = comment;
                     return (
                         <Fragment key={createdAt}>
+                            <hr className={classes.visibleSeparator}/>
                             <Grid item sm={12}>
-                                <Grid container>
+                                <Grid container spacing={1}>
                                     <Grid item sm={2}>
                                         <img src={userImage} alt='comment' className={classes.commentImage} />
                                     </Grid>
-                                    <Grid item sm={9}>
+                                    <Grid item sm={10}>
                                         <div className={classes.commentData}>
                                             <Typography
                                                 variant='h6'
@@ -47,7 +49,7 @@ class Comments extends Component {
                                             <Typography
                                                 variant='subtitle2'
                                                 color='textSecondary'>
-                                                    {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+                                                    {dayjs(createdAt).format('H:mm, MMM DD YYYY')}
                                             </Typography>
                                             <hr className={classes.invisibleSeparator}/>
                                             <Typography variant='body2'>{body}</Typography>
@@ -55,9 +57,6 @@ class Comments extends Component {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            {index !== comments.length - 1 && (
-                                <hr className={classes.visibleSeparator}/>
-                            )}
                         </Fragment>
                     )
                 })}

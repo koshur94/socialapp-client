@@ -17,29 +17,8 @@ const styles = theme => ({
 
 class CommentForm extends Component {
     state = {
-        body: '',
-        errors: {}
+        body: ''
     }
-
-    // static getDerivedStateFromProps(nextProps) {
-    //     if (nextProps.UI.errors) {
-    //         return {
-    //             errors: nextProps.UI.errors
-    //         }
-    //     }
-    //     return null;
-    // }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.UI.errors) {
-            this.setState({
-                errors: nextProps.UI.errors
-            })
-        };
-        if(!nextProps.UI.errors && !nextProps.UI.loading) {
-            this.setState({ body: '' });
-        }
-    };
 
     handleChange = event => {
         this.setState({
@@ -50,12 +29,12 @@ class CommentForm extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.props.submitComment(this.props.screamId, { body: this.state.body });
-
-    }
+        this.setState({ body: ''});
+    };
 
     render() {
         const { classes, authenticated } = this.props;
-        const { errors } = this.state;
+        const { errors } = this.props.UI;
 
         const commentFormMarkup = authenticated ? (
             <Grid item sm={12} style={{textAlign: 'center'}}>
@@ -64,8 +43,8 @@ class CommentForm extends Component {
                         name='body'
                         type='text'
                         label='Comment on scream'
-                        error={errors.comment ? true : false}
-                        helperText={errors.comment}
+                        error={Boolean(errors)}
+                        helperText={errors ? errors.comment : null}
                         value={this.state.body}
                         onChange={this.handleChange}
                         fullWidth
@@ -80,7 +59,6 @@ class CommentForm extends Component {
                         Submit
                     </Button>
                 </form>
-                <hr className={classes.visibleSeparator}/>
             </Grid>
         ) : null;
         return commentFormMarkup;

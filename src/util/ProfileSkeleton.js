@@ -16,23 +16,26 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 const styles = theme => ({
     ...theme.spreadThis,
     handle: {
-        height: 20,
+        height: 16,
         backgroundColor: '#00bcd4',
         width: 60,
         margin: '0 auto 7px auto'
     },
     fullLine: {
-        height: 15,
+        height: 14,
         backgroundColor: 'rgba(0, 0, 0, .6)',
         width: '100%',
         marginBottom: 10,
     },
     halfLine: {
-        height: 15,
+        height: 14,
         backgroundColor: 'rgba(0, 0, 0, .6)',
         width: '50%',
         marginBottom: 10,
     },
+    spanText: {
+        fontSize: 14
+    }
 })
 
 const ProfileSkeleton = props => {
@@ -49,11 +52,11 @@ const ProfileSkeleton = props => {
                     <hr />
                     <div className={classes.fullLine} />
                     <hr />
-                    <LocationOn color='primary'/> <span>Location</span>
+                    <LocationOn color='primary'/> <span className={classes.spanText}>Location</span>
                     <hr />
-                    <LinkIcon color='primary'/> <span>https://website.com</span>
+                    <LinkIcon color='primary'/> <span className={classes.spanText}>https://website.com</span>
                     <hr />
-                    <CalendarToday color='primary'/> <span>Joined date</span>
+                    <CalendarToday color='primary'/> <span className={classes.spanText}>Joined date</span>
                 </div>
             </div>
         </Paper>

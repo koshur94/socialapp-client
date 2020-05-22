@@ -36,7 +36,10 @@ const styles = {
         paddingBottom: 0,
         padding: '2%',
         objectFit: 'cover',
-        width: '80%'
+        width: '80%',
+        "&:last-child": {
+            paddingBottom: 0
+          }
     }
 }
 

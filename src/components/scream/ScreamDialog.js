@@ -26,14 +26,14 @@ import { CircularProgress } from '@material-ui/core';
 const styles = theme => ({
     ...theme.spreadThis,
     profileImage: {
-        width: 100,
-        height: 100,
+        width: 250,
+        height: 250,
         objectFit: 'cover',
-        maxWidth: '100%',
+        maxWidth: '98%',
         borderRadius: '50%'
     },
     dialogContent: {
-        padding: '2%'
+        padding: '5%'
     },
     closeButton: {
         position: 'absolute',
@@ -45,8 +45,11 @@ const styles = theme => ({
     },
     spinnerDiv: {
         textAlign: 'center',
-        marginTop: '2%',
-        marginBottom: '2%'
+        paddingTop: 8,
+        paddingBottom: 8
+    },
+    screamInfo: {
+        textAlign: 'center'
     }
 })
 
@@ -95,33 +98,40 @@ class ScreamDialog extends Component {
                 <CircularProgress size={150} thickness={1} />
             </div>
         ) : (
-            <Grid container spacing={2}>
-                <Grid item sm={3}>
+            <Grid
+                container
+                spacing={2}
+                justify='center'
+                alignItems='center'
+                >
+                <Grid item sm={6} >
                     <img src={userImage} alt='Profile' className={classes.profileImage}/>
                 </Grid>
-                <Grid item sm={9}>
-                    <Typography
-                        component={Link}
-                        color='primary'
-                        variant='h6'
-                        to={`/users/${userHandle}`}
-                    >
-                        @{userHandle}
-                    </Typography>
-                    {/* <hr className={classes.invisibleSeparator}/> */}
-                    <Typography variant='subtitle2' color='textSecondary'>
-                        {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-                    </Typography>
-                    {/* <hr className={classes.invisibleSeparator}/> */}
-                    <Typography variant='body2'>
-                        {body}
-                    </Typography>
-                    <LikeButton screamId={screamId}/>
-                    <small>{likeCount} {likeCount === 1 ? 'like' : 'likes'}</small>
-                    <MyButton tip='comments'>
-                        <ChatIcon color='primary' />
-                    </MyButton>
-                    <small>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</small>
+                <Grid item sm={12}>
+                    <div className={classes.screamInfo}>
+                        <Typography
+                            component={Link}
+                            color='primary'
+                            variant='h6'
+                            to={`/users/${userHandle}`}
+                        >
+                            @{userHandle}
+                        </Typography>
+                        {/* <hr className={classes.invisibleSeparator}/> */}
+                        <Typography variant='subtitle2' color='textSecondary'>
+                            {dayjs(createdAt).format('H:mm, MMMM DD YYYY')}
+                        </Typography>
+                        {/* <hr className={classes.invisibleSeparator}/> */}
+                        <Typography variant='body2'>
+                            {body}
+                        </Typography>
+                        <LikeButton screamId={screamId}/>
+                        <small>{likeCount}</small>
+                        <MyButton tip='comments'>
+                            <ChatIcon color='primary' />
+                        </MyButton>
+                        <small>{commentCount}</small>
+                    </div>
                 </Grid>
                 {/* <hr className={classes.visibleSeparator} /> */}
                 <CommentForm screamId={screamId}/>

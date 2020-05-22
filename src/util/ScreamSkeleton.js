@@ -26,27 +26,27 @@ const styles = theme => ({
     },
     handle: {
         width: 60,
-        height: 18,
+        height: 15,
         backgroundColor: '#00bcd4',
-        marginBottom: 7
+        marginBottom: 5
     },
     date: {
-        height: 14,
+        height: 12,
         width: 100,
         backgroundColor: 'rgba(0, 0, 0, .3)',
-        marginBottom: 10
+        marginBottom: 7
     },
     fullLine: {
-        height: 15,
+        height: 12,
         width: '90%',
         backgroundColor: 'rgba(0, 0, 0, .6)',
-        marginBottom: 10
+        marginBottom: 7
     },
     halfLine: {
-        height: 15,
+        height: 12,
         width: '50%',
         backgroundColor: 'rgba(0, 0, 0, .6)',
-        marginBottom: 10
+        marginBottom: 7
     }
 })
 
